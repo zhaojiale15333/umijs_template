@@ -26,6 +26,11 @@
     "react-dom": "17.x",
     "umi": "^3.5.36"
   },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-customizable"
+    }
+  },
   "devDependencies": {
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
