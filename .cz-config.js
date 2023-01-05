@@ -2,70 +2,71 @@ console.info('>>> local config in repo: ', __dirname);
 
 module.exports = {
   types: [
-    { value: 'feat', name: 'feat:     A new feature' },
-    { value: 'fix', name: 'fix:      A bug fix' },
-    { value: 'docs', name: 'docs:     Documentation only changes' },
     {
-      value: 'style',
-      name: 'style:    Changes that do not affect the meaning of the code\n            (white-space, formatting, missing semi-colons, etc)',
+      value: 'fix',
+      name: 'fix:      优化，或修复一个bug',
     },
     {
-      value: 'refactor',
-      name: 'refactor: A code change that neither fixes a bug nor adds a feature',
+      value: 'feat',
+      name: 'feat:     新增一个功能',
+    },
+    {
+      value: 'update',
+      name: 'update:   代码打包提交',
+    },
+    {
+      value: 'build',
+      name: 'build:    变更项目构建或外部依赖（如scopes: webpack、npm等）',
     },
     {
       value: 'perf',
-      name: 'perf:     A code change that improves performance',
+      name: 'perf:     性能优化',
     },
-    { value: 'test', name: 'test:     Adding missing tests' },
     {
-      value: 'chore',
-      name: 'chore:    Changes to the build process or auxiliary tools\n            and libraries such as documentation generation',
+      value: 'docs',
+      name: 'docs:     文档变更',
     },
-    { value: 'revert', name: 'revert:   Revert to a commit' },
-    { value: 'WIP', name: 'WIP:      Work in progress' },
+    {
+      value: 'revert',
+      name: 'revert:   代码回退',
+    },
+    {
+      value: 'refactor',
+      name: 'refactor: 代码重构',
+    },
+    {
+      value: 'test',
+      name: 'test:     添加一个测试',
+    },
   ],
-
-  scopes: [{ name: 'accounts' }, { name: 'admin' }, { name: 'exampleScope' }, { name: 'changeMe' }],
-
-  allowTicketNumber: false,
-  isTicketNumberRequired: false,
-  ticketNumberPrefix: 'TICKET-',
-  ticketNumberRegExp: '\\d{1,5}',
-
-  // it needs to match the value for field type. Eg.: 'fix'
-  /*
-  scopeOverrides: {
-    fix: [
-
-      {name: 'merge'},
-      {name: 'style'},
-      {name: 'e2eTest'},
-      {name: 'unitTest'}
-    ]
-  },
-  */
-  // override the messages, defaults are as follows
   messages: {
-    type: "Select the type of change that you're committing:",
-    scope: '\nDenote the SCOPE of this change (optional):',
+    type: '选择一种你期望的提交类型(type):',
+    // scope: '选择一个更改的范围(scope) (可选):',
     // used if allowCustomScopes is true
-    customScope: 'Denote the SCOPE of this change:',
-    subject: 'Write a SHORT, IMPERATIVE tense description of the change:\n',
-    body: 'Provide a LONGER description of the change (optional). Use "|" to break new line:\n',
-    breaking: 'List any BREAKING CHANGES (optional):\n',
-    footer: 'List any ISSUES CLOSED by this change (optional). E.g.: #31, #34:\n',
-    confirmCommit: 'Are you sure you want to proceed with the commit above?',
+    // customScope: 'Denote the SCOPE of this change:',
+    subject: '输入本次commit记录说明:\n',
+    // body: '长说明，使用"|"换行(可选)：\n',
+    // breaking: '非兼容性说明 (可选):\n',
+    // footer: '关联关闭的issue，例如：#31, #34(可选):\n',
+    confirmCommit: '确定提交说明?',
   },
-
-  allowCustomScopes: true,
-  allowBreakingChanges: ['feat', 'fix'],
-  // skip any questions you want
-  skipQuestions: ['body'],
-
-  // limit subject length
+  // ? 设置更改的范围
+  // scopes: [
+  //   { name: 'api' },
+  //   { name: 'bug' },
+  //   { name: 'optimization' },
+  //   { name: '添加其它' }
+  // ],
+  skipQuestions: ['scope', 'body', 'breaking', 'footer'],
+  allowBreakingChanges: [
+    'fix',
+    'feat',
+    'update',
+    'refactor',
+    'perf',
+    'build',
+    'revert',
+  ],
   subjectLimit: 100,
-  // breaklineChar: '|', // It is supported for fields body and footer.
-  // footerPrefix : 'ISSUES CLOSED:'
-  // askForBreakingChangeFirst : true, // default is false
 };
+
